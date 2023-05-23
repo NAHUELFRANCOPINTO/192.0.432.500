@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" href="/autogestion/grado/_comp/siu/img/favicon.ico" type="image/x-icon" />
+
+    <title>Grado - Validar Certificado</title>
+
+    <script type='text/javascript' src='/autogestion/grado/_comp/siu/js/guarani_mash.js' charset="iso-8859-1"></script>
+    <link type='text/css' href='/autogestion/grado/_comp/siu/css/guarani_mash.css' rel='stylesheet' />
+    <link type='text/css' href='/autogestion/grado/_comp/utn/css/guarani_mash.css' rel='stylesheet' />
+    <link type='text/css' href='/autogestion/grado/_comp/grado/css/guarani_mash.css' rel='stylesheet' />
+    <link type='text/css' href='/autogestion/grado/css/font-awesome-4.6.3/css/font-awesome.min.css' rel='stylesheet' />
+
+    <!--[if lt IE 9]>
+        <script type='text/javascript' src='/autogestion/grado/_comp/js/html5.js'></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="brand-nav">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span3">
+                    <a class="brand" href="https://guarani.frba.utn.edu.ar/autogestion/grado/acceso">
+                        <img src="/autogestion/grado/_comp/utn/img/logo-transparente.png" />
+                    </a>
+                </div>
+                <div class="span9"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar main-nav">
+        <div class="navbar-inner">
+            <div class="container">
+                <div role="navigation">
+                    <ul id='js-nav' class='nav'>
+                        <li id='acceso' class='js-menuitem-root'>
+                            <a href='https://guarani.frba.utn.edu.ar/autogestion/grado/acceso'>Acceso</a>
+                        </li>
+                        <li id='fecha_examen' class='js-menuitem-root'>
+                            <a href='https://guarani.frba.utn.edu.ar/autogestion/grado/fecha_examen'>Fechas de Examen</a>
+                        </li>
+                        <li id='validar_certificado' class='js-menuitem-root menu-item-seleccionado'>
+                            <a href='https://guarani.frba.utn.edu.ar/autogestion/grado/validar_certificado'>Validar Certificado</a>
+                        </li>
+                        <li id='noticias' class='js-menuitem-root'>
+                            <a href='https://guarani.frba.utn.edu.ar/autogestion/grado/noticias'>Noticias</a>
+                        </li>
+                        <li id='calendario_academico' class='js-menuitem-root'>
+                            <a href='https://guarani.frba.utn.edu.ar/autogestion/grado/calendario_academico'>Calendario Académico</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='container'>
+        <div id='validar' class='pagelet'>
+            <h2>Validar certificado</h2>
+            <p>Ingrese los datos del certificado para validarlo</p>
+            <form method="post" action="https://guarani.frba.utn.edu.ar/autogestion/grado/validar_certificado/validar" id="guarani_form_validar_certificado">
+                <div class="control-group">
+                    <label class="control-label" for="nro_documento">Número de documento (sin puntos ni guiones)</label>
+                    <div class="controls">
+                        <input id="nro_documento" name="nro_documento" type="text" value="" />
+                    </div>
+                    <label class="control-label" for="codigo_validacion">Código de validación</label>
+                    <div class="controls">
+                        <input id="codigo_validacion" name="codigo_validacion" type="text" value="" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input id="validar" name="validar" type="submit" value="Validar" class="btn btn-info" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id='pdf' class='pagelet'>
+            <!-- Insert the code or content to display the document here -->
+        </div>
+    </div>
+
+    <div id='footer'>
+        <div class='container'>
+            <div class='row-fluid'>
+                <div class='span6'></div>
+                <div class='span6'></div>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript'>
+        // Handle form submission
+        document.getElementById('guarani_form_validar_certificado').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get the values from the input fields
+            var nroDocumento = document.getElementById('nro_documento').value;
+            var codigoValidacion = document.getElementById('codigo_validacion').value;
+
+            // Check if the input values match the desired values
+            if (nroDocumento === '44451821' && codigoValidacion === '435432') {
+                // Show the PDF document
+                document.getElementById('pdf').innerHTML = '<embed src="URL_TO_YOUR_DOCUMENT.pdf" type="application/pdf" width="100%" height="600px" />';
+            } else {
+                // Display an error message or perform other actions if the validation fails
+                alert('Invalid document or validation code');
+            }
+        });
+    </script>
+</body>
+</html>
